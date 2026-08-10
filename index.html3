@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Respeito - Contra o Cyberbullying</title>
+    <style>
+        /* Variáveis de Acessibilidade e Paleta em Tons de Rosa */
+        :root {
+            --bg-color: #fff0f5; 
+            --text-color: #4a2e35;
+            --primary-color: #d81b60; 
+            --secondary-color: #f8bbd0; 
+            --accent-color: #c2185b;
+            --card-bg: #ffffff;
+            --font-size-base: 1rem;
+        }
+
+        /* Modo Alto Contraste */
+        body.high-contrast {
+            --bg-color: #000000;
+            --text-color: #ffffff;
+            --primary-color: #ffff00;
+            --secondary-color: #333333;
+            --accent-color: #ff4444;
+            --card-bg: #1a1a1a;
+        }
+
+        /* Estilos Gerais */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-size: var(--font-size-base);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            padding: 2.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.2rem;
+        }
+
+        /* Barra de Acessibilidade */
+        .accessibility-bar {
+            background-color: var(--card-bg);
+            padding: 0.8rem 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            border-bottom: 2px solid var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .accessibility-bar button {
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: opacity 0.2s;
+        }
+
+        .accessibility-bar button:hover {
+            opacity: 0.85;
+        }
+
+        /* Conteúdo Principal */
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            background-color: var(--card-bg);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(216, 27, 96, 0.08);
+            border: 1px solid rgba(248, 187, 208, 0.5);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.6rem;
+        }
+
+        /* Estilização da Imagem e Vídeo */
+        .media-container {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .media-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid var(--secondary-color);
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border: 2px solid var(--secondary-color);
+            margin-top: 1rem;
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        /* Caixas de Alerta e Ajuda */
+        .help-box {
+            background-color: var(--secondary-color);
+            border-left: 6px solid var(--primary-color);
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            color: #3b1723;
+        }
+
+        .alert-box {
+            background-color: #fce4ec;
+            border-left: 6px solid #ad1457;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            color: #5c1c30;
+        }
+
+        .law-box {
+            background-color: #fff9fb;
+            border-left: 6px solid #d81b60;
+            padding: 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            color: #4a2e35;
+            border-top: 1px solid var(--secondary-color);
+            border-right: 1px solid var(--secondary-color);
+            border-bottom: 1px solid var(--secondary-color);
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 3rem;
+            box-shadow: -4px 6px rgba(0,0,0,0.05);
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barra de Acessibilidade -->
+    <div class="accessibility-bar" role="region" aria-label="Ferramentas de Acessibilidade">
+        <button onclick="changeFontSize(1)" aria-label="Aumentar tamanho da fonte">A +</button>
+        <button onclick="changeFontSize(-1)" aria-label="Diminuir tamanho da fonte">A -</button>
+        <button onclick="toggleContrast()" aria-label="Alternar alto contraste">Alto Contraste</button>
+    </div>
+
+    <!-- Cabeçalho -->
+    <header>
+        <h1>Conexão Respeito</h1>
+        <p>Escola livre de Cyberbullying: Empatia e segurança no ambiente digital e escolar.</p>
+    </header>
+
+    <!-- Conteúdo -->
+    <main>
+        <!-- Seção 1: O que é -->
+        <section id="o-que-e">
+            <h2>O que é o Cyberbullying?</h2>
+            <p>O cyberbullying acontece quando o meio digital (redes sociais, aplicativos de mensagens, jogos online ou fóruns) é utilizado para intimidar, perseguir, humilhar ou difamar alguém de forma proposital e repetida. Diferente do bullying tradicional, o conteúdo online pode se espalhar rapidamente e ficar acessível por tempo indeterminado.</p>
+            
+            <div class="media-container">
+                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" alt="Pessoas refletindo diante de telas de dispositivos eletrônicos, representando o impacto do ambiente digital">
+            </div>
+        </section>
+
+        <!-- Seção 2: Consequências e Sinais -->
+        <section id="sinais">
+            <h2>Quais são os sinais e impactos?</h2>
+            <p>Alunos que sofrem com agressões virtuais costumam apresentar mudanças bruscas de comportamento:</p>
+            <ul>
+                <li>Isolamento social repentino dos amigos e familiares.</li>
+                <li>Queda drástica no rendimento escolar ou desinteresse repentino pelos estudos.</li>
+                <li>Ansiedade intensa, medo ou choro ao receber notificações no celular.</li>
+                <li>Mudanças extremas de humor e alterações nos padrões de sono ou apetite.</li>
+            </ul>
+        </section>
+
+        <!-- Seção 3: Leis e Punições -->
+        <section id="leis-punicoes">
+            <h2>Leis, Punições e Consequências Legais</h2>
+            <p>O cyberbullying não é apenas uma "brincadeira de internet"; ele é considerado crime no Brasil e acarreta sérias penalidades civis, penais e educacionais:</p>
+            
+            <div class="law-box">
+                <strong>O que diz a Legislação Brasileira:</strong>
+                <ul>
+                    <li><strong>Lei nº 13.185/2015:</strong> Institui o Programa de Combate ao Bullying Sistemico (incluindo o meio virtual) em âmbito escolar, determinando que as escolas devem prevenir, conscientizar e punir essas condutas no regimento interno.</li>
+                    <li><strong>Código Penal Brasileiro (Crimes contra a Honra):</strong> Praticar calúnia (Art. 138), difamação (Art. 139) ou injúria (Art. 140) através da internet pode resultar em penas de detenção e multas.</li>
+                    <li><strong>Estatuto da Criança e do Adolescente (ECA - Lei nº 8.069/1990):</strong> Caso os envolvidos sejam menores de idade, a prática de atos infracionais análogos a crimes gera aplicação de <strong>Medidas Socioeducativas</strong> aplicadas por um Juiz da Vara da Infância e da Juventude (como advertência, prestação de serviços à comunidade ou até internação em casos graves).</li>
+                </ul>
+            </div>
+
+            <div class="alert-box">
+                <strong>Punições Escolares e Responsabilidade Civil:</strong>
+                <ul>
+                    <li><strong>Na Escola:</strong> O aluno agressor está sujeito a advertências formais, suspensões temporárias ou até mesmo transferência compulsória, conforme o regimento escolar.</li>
+                    <li><strong>Indenização Civil:</strong> Os pais ou responsáveis legais respondem civilmente pelos atos dos filhos menores, podendo ser obrigados judicialmente a pagar indenizações por danos morais à vítima.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção 4: Vídeo Educativo -->
+        <section id="video-educativo">
+            <h2>Vídeo Educativo: Pare o Cyberbullying</h2>
+            <p>Assista ao vídeo abaixo para entender melhor como pequenas atitudes na internet podem transformar vidas e como podemos promover um ambiente escolar mais saudável:</p>
+            
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube-nocookie.com/embed/rR1W2x1m6_Y" title="Vídeo educativo sobre cyberbullying" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- Seção 5: Ajuda e Apoio -->
+        <section id="ajuda">
+            <h2>Precisa de Ajuda? Onde procurar apoio</h2>
+            <p>Se você ou algum colega está passando por isso, lembre-se: <strong>a culpa não é sua e você não está sozinho</strong>.</p>
+            
+            <div class="help-box">
+                <strong>No Ambiente Escolar:</strong>
+                <p>Procure imediatamente um professor de confiança, a coordenação pedagógica, o orientador educacional ou a direção da escola. As instituições de ensino possuem protocolos para garantir a segurança dos estudantes.</p>
+            </div>
+
+            <div class="alert-box">
+                <strong>Canais Oficiais de Denúncia e Apoio:</strong>
+                <ul>
+                    <li><strong>Disque 100:</strong> Direitos Humanos (serviço gratuito, sigiloso e disponível 24h).</li>
+                    <li><strong>SaferNet Brasil:</strong> Central nacional de denúncias de crimes contra os direitos humanos na internet (<a href="https://www.safernet.org.br" target="_blank" style="color: var(--primary-color);">www.safernet.org.br</a>).</li>
+                    <li><strong>Delegacias Especializadas:</strong> Em casos de ameaças graves, exposição de imagens íntimas ou crimes cibernéticos.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Seção 6: Fontes de Referência -->
+        <section id="fontes">
+            <h2>Fontes e Referências de Pesquisa</h2>
+            <p>As informações legais e orientações contidas nesta página foram obtidas através de fontes institucionais e normativas oficiais:</p>
+            <ul>
+                <li><strong>Planalto / Legislação Federal:</strong> Lei nº 13.185/2015 (Programa de Combate ao Bullying) e Lei nº 8.069/1990 (Estatuto da Criança e do Adolescente - ECA).</li>
+                <li><strong>Código Penal Brasileiro:</strong> Artigos referentes aos crimes contra a honra (Calúnia, Difamação e Injúria).</li>
+                <li><strong>SaferNet Brasil:</strong> Organização de referência em direitos humanos na internet e combate aos crimes cibernéticos no Brasil.</li>
+                <li><strong>Ministério dos Direitos Humanos e da Cidadania:</strong> Diretrizes do Disque 100 para proteção de crianças e adolescentes.</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2026 Conexão Respeito - Todos os direitos reservados.</p>
+        <p>Desenvolvido por <strong>Ana Carolina Haack Ximendes</strong></p>
+    </footer>
+
+    <!-- Script de Acessibilidade -->
+    <script>
+        let currentSize = 100;
+
+        function changeFontSize(direction) {
+            currentSize += direction * 10;
+            if (currentSize < 80) currentSize = 80;
+            if (currentSize > 160) currentSize = 160;
+            
+            document.documentElement.style.fontSize = currentSize + '%';
+        }
+
+        function toggleContrast() {
+            document.body.classList.toggle('high-contrast');
+        }
+    </script>
+</body>
+</html>
